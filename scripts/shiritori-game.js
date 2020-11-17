@@ -85,7 +85,7 @@ function update_latest_selection(word_id, phrase, phrase_type)
 {
     document.getElementById("latest-selection-image").src = "images/game/" + word_id + ".png";
     document.getElementById("latest-selection-image").alt = word_id + ";" + phrase + ";" + phrase_type;
-    document.getElementById("latest-selection-character").innerHTML = initiallaw(get_last_character(phrase));
+    document.getElementById("latest-selection-character").innerHTML = get_last_character(phrase);
     document.getElementById("latest-selection-text").innerHTML = phrase;
 
     document.getElementById("latest-selection-character").classList.remove(word_list_keys.futsuyomi);
