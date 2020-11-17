@@ -678,7 +678,7 @@ function build_word_list()
                 html += "<div class='priconneyomi word-list-text' style='font-weight: bolder'>" + priconneyomi_array[i] + "</div>";
                 html += "</button><br>";
             }
-            html += "<br>";
+//            html += "<br>";
         }
         html += "</tbody></table><br><br><br>";
     }
