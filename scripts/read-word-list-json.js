@@ -22,7 +22,7 @@ read_word_list(function () {
     word_list_loaded = true;
 
     // ADD ん TO RESULT MAP
-    result_map.set("ん", []);
+//    result_map.set("ん", []);
 });
 
 function print_result_map()
@@ -46,7 +46,7 @@ function get_missing_phrase_map()
         missing_phrase_map.set(character, phrase_array);
     });
     // ADD ん
-    missing_phrase_map.set("ん", []);
+//    missing_phrase_map.set("ん", []);
 
     return missing_phrase_map;
 }
@@ -61,7 +61,7 @@ function get_npc_choice_map()
         npc_phrase_map.set(character, phrase_array);
     });
     // ADD ん
-    npc_phrase_map.set("ん", []);
+//    npc_phrase_map.set("ん", []);
 
     return npc_phrase_map;
 }
