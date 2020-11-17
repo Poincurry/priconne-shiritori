@@ -85,7 +85,7 @@ function update_latest_selection(word_id, phrase, phrase_type)
 {
     document.getElementById("latest-selection-image").src = "images/game/" + word_id + ".png";
     document.getElementById("latest-selection-image").alt = word_id + ";" + phrase + ";" + phrase_type;
-    document.getElementById("latest-selection-character").innerHTML = get_last_character(phrase);
+    document.getElementById("latest-selection-character").innerHTML = initiallaw(get_last_character(phrase));
     document.getElementById("latest-selection-text").innerHTML = phrase;
 
     document.getElementById("latest-selection-character").classList.remove(word_list_keys.futsuyomi);
@@ -263,7 +263,7 @@ function remove_word_from_collection(word_id, phrase, phrase_type)
 function get_possible_words(phrase)
 {
     // NOTE THAT THIS IS IN HIRAGANA, KATAKANA CHARACTERS MUST BE CHECKED AS WELL
-    let end_character = get_last_character(phrase);
+    let end_character = initiallaw(get_last_character(phrase));
     let table_html = "";
     let counter = 0;
     let is_player_turn = !document.getElementById("your-turn-text").hidden;
@@ -345,7 +345,7 @@ function get_possible_words(phrase)
         let phrase_highlight = "";
         let color_highlight = "";
         let additional_title_text = "";
-        let last_character = get_last_character(phrase);
+        let last_character = initiallaw(get_last_character(phrase));
         let kaya_new_phrases = missing_phrase_map.get(last_character);
         if (!is_player_turn)
         {
@@ -379,7 +379,7 @@ function get_possible_words(phrase)
             npc_choices_map.get(last_character).forEach(function (kaya_phrase)
             {
                 // GET LAST CHARACTER OF KAYA'S OPTION AND SEE IF THE USER CAN GET SOMETHING OUT OF IT
-                let lc = get_last_character(kaya_phrase.split(';')[1]);
+                let lc = initiallaw(get_last_character(kaya_phrase.split(';')[1]));
                 let missing_phrases = missing_phrase_map.get(lc);
 
                 // CHECK STATUS
@@ -548,10 +548,10 @@ function build_all_choices()
                 word_id !== last_word_id)
             {
                 last_word_id = word_id;
-                if (get_last_character(Object.keys(words[i])[0]) !== "ん")
-                {
+//                if (get_last_character(Object.keys(words[i])[0]) !== "ん")
+//                {
                     add_word_to_table_html(word_id, words[i]);
-                }
+//                }
             }
         }
     }
@@ -591,7 +591,7 @@ function build_all_choices()
 
 function get_last_character(phrase)
 {
-    return initiallaw(phrase[phrase.length - 1] === "~" ? phrase[phrase.length - 2] : phrase[phrase.length - 1]);
+    return phrase[phrase.length - 1] === "~" ? phrase[phrase.length - 2] : phrase[phrase.length - 1];
 }
 
 function initiallaw(syllable)
