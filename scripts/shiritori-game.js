@@ -277,9 +277,9 @@ function get_possible_words(phrase)
         // COLLECT POSSIBLE PHRASES FROM WORD
         for (let i = 0 ; i < word_data.get(word_list_keys.futsuyomi).length ; i++)
         {
-            let first_character = word_data.get(word_list_keys.futsuyomi)[i][0];
+            let first_character = initiallaw(word_data.get(word_list_keys.futsuyomi)[i][0]);
             if (end_character === first_character ||
-                wanakana.toKatakana(end_character) === first_character)
+                end_character === first_character)
             {
                 possible_words.push({ [word_data.get(word_list_keys.futsuyomi)[i]] : word_list_keys.futsuyomi });
             }
@@ -288,7 +288,7 @@ function get_possible_words(phrase)
         {
             let first_character = word_data.get(word_list_keys.urayomi)[i][0];
             if (end_character === first_character ||
-                wanakana.toKatakana(end_character) === first_character)
+                end_character === first_character)
             {
                 possible_words.push({ [word_data.get(word_list_keys.urayomi)[i]] : word_list_keys.urayomi });
             }
@@ -297,7 +297,7 @@ function get_possible_words(phrase)
         {
             let first_character = word_data.get(word_list_keys.priconneyomi)[i][0];
             if (end_character === first_character ||
-                wanakana.toKatakana(end_character) === first_character)
+                end_character === first_character)
             {
                 possible_words.push({ [word_data.get(word_list_keys.priconneyomi)[i]] : word_list_keys.priconneyomi });
             }
@@ -591,8 +591,16 @@ function build_all_choices()
 
 function get_last_character(phrase)
 {
-    return wanakana.toHiragana(phrase[phrase.length - 1] === "ー" ? phrase[phrase.length - 2] : phrase[phrase.length - 1]);
+    return initiallaw(phrase[phrase.length - 1] === "~" ? phrase[phrase.length - 2] : phrase[phrase.length - 1]);
 }
+
+function initiallaw(syllable)
+{
+	const beforeinitial = "감강거검게격견경계고과괴구귀그금기나네녀녕노논느니님다달당도두드디떡라란래량레려령로료루류름리마머메모목무문물미바박발별보봉부비사산살생서선소수술스승시식아안애야약양어여영오요우위유육음이일임자잔잠장적전정주쥐지진창체치카코쿠크키타탕토투트티파팔패페프플피하한해형호화";
+	const afterinitial = "감강거검게격견경계고과괴구귀그금기나네여영노논느이임다달당도두드디떡나안애양네여영노요누유음이마머메모목무문물미바박발별보봉부비사산살생서선소수술스승시식아안애야약양어여영오요우위유육음이일임자잔잠장적전정주쥐지진창체치카코쿠크키타탕토투트티파팔패페프플피하한해형호화";
+	return afterinitial[beforeinitial.search(syllable)];
+}
+// 두음법칙
 
 function toggle_rush_mode()
 {
