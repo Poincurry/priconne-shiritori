@@ -8,9 +8,9 @@ let result_map = new Map();
 let reverse_result_map = new Map();
 let word_list_loaded = false;
 const word_list_keys = Object.freeze({
-    futsuyomi: '일반 읽기',
-    urayomi: '숨은 뜻 읽기',
-    priconneyomi: '프리코네 뜻',
+    futsuyomi: 'futsuyomi',
+    urayomi: 'urayomi',
+    priconneyomi: 'priconneyomi',
 });
 
 
