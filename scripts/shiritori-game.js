@@ -647,9 +647,9 @@ function build_word_list()
         html += "<img id='" + word_id + "-complete' class='complete' src='images/webpage/" + "complete" + ".png' alt='' hidden>";
 
         // FUTSUYOMI PHRASES
+            html += "<br>";
         if (futsuyomi_array.length > 0)
         {
-            html += "<br>";
             for (let i = 0 ; i < futsuyomi_array.length ; i++)
             {
                 html += "<button id='" + word_id + "-" + futsuyomi_array[i] + "' onclick='toggle_phrase(\"" + word_id + "\", \"" + futsuyomi_array[i] + "\", \"futsuyomi\");'>";
@@ -678,7 +678,7 @@ function build_word_list()
                 html += "<div class='priconneyomi word-list-text' style='font-weight: bolder'>" + priconneyomi_array[i] + "</div>";
                 html += "</button><br>";
             }
-//            html += "<br>";
+            html += "<br>";
         }
         html += "</tbody></table><br><br><br>";
     }
