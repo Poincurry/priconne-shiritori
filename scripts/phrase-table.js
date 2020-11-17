@@ -88,7 +88,7 @@ function create_table(desired_word)
 
         // GET DATA
         let dw_data = desired_word.split(';');
-        let dw_lc = get_last_character(dw_data[1]);
+        let dw_lc = initiallaw(get_last_character(dw_data[1]));
 
         // INSERT INFO FROM DESIRED WORD INTO TREE (NAME / IMAGE / CLASS)
         chart_config["nodeStructure"]["text"]["name"] = dw_data[1] + " [" + get_last_character(dw_data[1]) + "]";
