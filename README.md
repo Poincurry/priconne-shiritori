@@ -1,5 +1,16 @@
 # Princess Connect! Re:Dive Shiritori Helper<br>(priconne-shiritori)
 
+## Introduction
+It is Korean-translated version of Re:dive Shiritori Helper made by Expugn.
+
+It is uploaded to utilize XMLHttpRequest function in Javascript, so planned to use in private.
+
+Manual is below the line from raw source.
+
+URL: <https://poincurry.github.io/priconne-shiritori-kor/>
+
+-------------------------------------------------------------------------------------------------------------------------------
+
 URL: <https://expugn.github.io/priconne-shiritori/>
 
 ## Information
