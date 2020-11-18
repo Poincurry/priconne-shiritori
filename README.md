@@ -3,7 +3,7 @@
 ## Introduction
 It is Korean-translated version of Re:dive Shiritori Helper made by Expugn.
 
-It is uploaded to utilize XMLHttpRequest function in Javascript, so planned to use in private.
+It is uploaded to utilize XMLHttpRequest function in Javascript, so planned to use privately.
 
 Manual is below the line from raw source.
 
