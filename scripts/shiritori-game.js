@@ -583,7 +583,7 @@ function build_all_choices()
         table_html += "<img class='notranslate word-image' title='" + phrase + "' src='images/game/" + word_id + ".png' alt=''>";
         table_html += "<img class='notranslate character-circle' src='images/webpage/" + "character_circle" + ".png' alt=''>";
         table_html += "<div class='notranslate end-character webpage-text " + phrase_type + "'>" + get_last_character(phrase) + "</div>";
-        table_html += "</button>" + phrase + "</th>";
+        table_html += "</button><br>" + phrase + "</th>";
 
         counter++;
     }
