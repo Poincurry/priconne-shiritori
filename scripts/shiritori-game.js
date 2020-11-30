@@ -545,9 +545,10 @@ function build_all_choices()
             // ALSO BLACKLIST ANY FUTSUYOMI WORDS THAT END WITH ん
             if (words[i][Object.keys(words[i])[0]] !== word_list_keys.priconneyomi &&
                 words[i][Object.keys(words[i])[0]] !== word_list_keys.urayomi &&
-                word_id !== last_word_id)
+//                word_id !== last_word_id
+				)
             {
-                last_word_id = word_id;
+//                last_word_id = word_id;
 //                if (get_last_character(Object.keys(words[i])[0]) !== "ん")
 //                {
                     add_word_to_table_html(word_id, words[i]);
