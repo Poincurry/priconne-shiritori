@@ -544,7 +544,7 @@ function build_all_choices()
             // ALSO BLACKLIST ANY FUTSUYOMI WORDS THAT AREN'T THE FIRST ONE
             // ALSO BLACKLIST ANY FUTSUYOMI WORDS THAT END WITH ん
             if (words[i][Object.keys(words[i])[0]] !== word_list_keys.priconneyomi &&
-                words[i][Object.keys(words[i])[0]] !== word_list_keys.urayomi &&
+                words[i][Object.keys(words[i])[0]] !== word_list_keys.urayomi
 //                word_id !== last_word_id
 				)
             {
