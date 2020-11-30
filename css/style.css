@@ -26,6 +26,10 @@ p.footer {
     font-weight: bold;
 }
 
+span {
+	color: #FFFFFF;
+}
+
 img.footer {
     height: 24px;
     width: 24px;
