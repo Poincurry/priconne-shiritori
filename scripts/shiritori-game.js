@@ -429,7 +429,7 @@ function get_possible_words(phrase)
         table_html += "<img class='notranslate " + color_highlight + phrase_highlight + " word-image' title='" + phrase + "\n" + additional_title_text + "' src='images/game/" + word_id + ".png' alt=''>";
         table_html += "<img class='notranslate " + phrase_highlight + "character-circle' src='images/webpage/" + "character_circle" + ".png' alt=''>";
         table_html += "<div class='notranslate end-character webpage-text " + phrase_type + "'>" + get_last_character(phrase) + "</div>";
-        table_html += "</button></th>";
+        table_html += "</button><br>" + phrase + "</th>";
 
         counter++;
     }
