@@ -386,8 +386,20 @@ function get_possible_words(phrase)
             let kaya_phrases_string = "";
             let user_phrases_string = "";
             let kaya_and_user_phrases_string = "";
-
-            npc_choices_map.get(last_character).forEach(function (kaya_phrase)
+			
+			let npc_choices_phrase = npc_choices_map.get(last_character);
+			if (last_character !== initiallaw(last_character)) {
+				const additional_phrases = npc_choices_map.get(initiallaw(last_character));
+				if (npc_choices_phrase) {
+					const startnum = npc_choices_phrase.length;
+					for (let i = 0; i < additional_phrases.length; i++) {
+						npc_choices_phrase[i+startnum] = additional_phrases[i];
+					}
+				} else {
+					missing_phrases = additional_phrases;
+				}
+			}
+            npc_choices_phrase.forEach(function (kaya_phrase)
             {
                 // GET LAST CHARACTER OF KAYA'S OPTION AND SEE IF THE USER CAN GET SOMETHING OUT OF IT
                 let lc = get_last_character(kaya_phrase.split(';')[1]);
