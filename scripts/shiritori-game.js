@@ -347,7 +347,11 @@ function get_possible_words(phrase)
         let last_character = get_last_character(phrase);
         let kaya_new_phrases = missing_phrase_map.get(last_character);
 		if (last_character !== initiallaw(last_character)) {
-			kaya_new_phrases.concat(missing_phrase_map.get(initiallaw(last_character)));
+			const additional_phrases = missing_phrase_map.get(initiallaw(last_character));
+			const startnum = kaya_new_phrases.length;
+			for (let i = 0; i < additional_phrases.length; i++) {
+				kaya_new_phrases[i + startnum] = additional_phrases[i];
+			}
 		}
 		// 두음법칙 적용
         if (!is_player_turn)
@@ -385,7 +389,11 @@ function get_possible_words(phrase)
                 let lc = get_last_character(kaya_phrase.split(';')[1]);
                 let missing_phrases = missing_phrase_map.get(lc);
 				if (lc !== initiallaw(lc)) {
-					missing_phrases.concat(missing_phrase_map.get(initiallaw(lc)));
+					const additional_phrases = missing_phrase_map.get(initiallaw(lc));
+					const startnum = kaya_new_phrases.length;
+					for (let i = 0; i < additional_phrases.length; i++) {
+						missing_phrases[i+startnum] = additional_phrases[i];
+					}
 				}
 
                 // CHECK STATUS
