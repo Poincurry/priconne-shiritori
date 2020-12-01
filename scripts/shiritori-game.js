@@ -388,7 +388,8 @@ function get_possible_words(phrase)
             {
                 // GET LAST CHARACTER OF KAYA'S OPTION AND SEE IF THE USER CAN GET SOMETHING OUT OF IT
                 let lc = get_last_character(kaya_phrase.split(';')[1]);
-                let missing_phrases = missing_phrase_map.get(lc);
+                var missing_phrases = missing_phrase_map.get(lc);
+				console.log(missing_phrases);
 				if (lc !== initiallaw(lc)) {
 					const additional_phrases = missing_phrase_map.get(initiallaw(lc));
 					console.log(missing_phrases);
