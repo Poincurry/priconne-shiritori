@@ -52,7 +52,7 @@ function create_table(desired_word)
     if (!document.getElementById("result-search-checkbox").checked)
     {
         let dw_data = desired_word.split(';');
-        let dw_fc = initiallaw(dw_data[1][0]);
+        let dw_fc = dw_data[1][0];
 
         // INSERT INFO FROM DESIRED WORD INTO TREE (NAME / IMAGE / CLASS)
         chart_config["nodeStructure"]["text"]["name"] = dw_data[1] + " [" + get_last_character(dw_data[1]) + "]";
@@ -61,6 +61,11 @@ function create_table(desired_word)
 
         // FIND POSSIBLE WORDS THAT CAN LEAD TO DESIRED WORD
         let array_of_words_that_end_with_first_char = reverse_result_map.get(dw_fc);
+		if (inverse_initiallaw(dw_fc)) {
+			for (let i = 0; i < inverse_initiallaw(dw_fc).length; i++) {
+				array_of_words_that_end_with_first_char.push = reverse_result_map.get(dw_fc[i])
+			}
+		}
         array_of_words_that_end_with_first_char.forEach(function (w)
         {
             let w_data = w.split(';');
@@ -88,7 +93,7 @@ function create_table(desired_word)
 
         // GET DATA
         let dw_data = desired_word.split(';');
-        let dw_lc = initiallaw(get_last_character(dw_data[1]));
+        let dw_lc = get_last_character(dw_data[1]);
 
         // INSERT INFO FROM DESIRED WORD INTO TREE (NAME / IMAGE / CLASS)
         chart_config["nodeStructure"]["text"]["name"] = dw_data[1] + " [" + get_last_character(dw_data[1]) + "]";
@@ -97,6 +102,9 @@ function create_table(desired_word)
 
         // FIND POSSIBLE WORDS DESIRED WORD CAN MAKE
         let array_of_words_that_begin_with_last_character = result_map.get(dw_lc);
+		if (dw_lc !== initiallaw(dw_lc)) {
+			array_of_words_that_begin_with_last_character.push = result_map.get(initiallaw(dw_lc));
+		}
         array_of_words_that_begin_with_last_character.forEach(function (w)
         {
             let w_data = w.split(';');
