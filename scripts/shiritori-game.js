@@ -391,6 +391,7 @@ function get_possible_words(phrase)
                 let missing_phrases = missing_phrase_map.get(lc);
 				if (lc !== initiallaw(lc)) {
 					const additional_phrases = missing_phrase_map.get(initiallaw(lc));
+					console.log(missing_phrases);
 					const startnum = missing_phrases.length;
 					for (let i = 0; i < additional_phrases.length; i++) {
 						missing_phrases[i+startnum] = additional_phrases[i];
