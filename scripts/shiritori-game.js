@@ -347,7 +347,7 @@ function get_possible_words(phrase)
         let last_character = get_last_character(phrase);
         let kaya_new_phrases = missing_phrase_map.get(last_character);
 		if (last_character !== initiallaw(last_character)) {
-			kaya_new_phrases.push = missing_phrase_map.get(initiallaw(last_character));
+			kaya_new_phrases.concat(missing_phrase_map.get(initiallaw(last_character)));
 		}
 		// 두음법칙 적용
         if (!is_player_turn)
@@ -385,7 +385,7 @@ function get_possible_words(phrase)
                 let lc = get_last_character(kaya_phrase.split(';')[1]);
                 let missing_phrases = missing_phrase_map.get(lc);
 				if (lc !== initiallaw(lc)) {
-					missing_phrases.push = missing_phrase_map.get(initiallaw(lc));
+					missing_phrases.concat(missing_phrase_map.get(initiallaw(lc)));
 				}
 
                 // CHECK STATUS
