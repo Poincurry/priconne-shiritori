@@ -63,8 +63,7 @@ function create_table(desired_word)
         let array_of_words_that_end_with_first_char = reverse_result_map.get(dw_fc);
 		if (inverse_initiallaw(dw_fc)) {
 			for (let i = 0; i < inverse_initiallaw(dw_fc).length; i++) {
-				array_of_words_that_end_with_first_char.concat(reverse_result_map.get(inverse_initiallaw(dw_fc)[i]));
-				console.log(array_of_words_that_end_with_first_char);
+				array_of_words_that_end_with_first_char = array_of_words_that_end_with_first_char.concat(reverse_result_map.get(inverse_initiallaw(dw_fc)[i]));
 			}
 		}
         array_of_words_that_end_with_first_char.forEach(function (w)
@@ -104,7 +103,7 @@ function create_table(desired_word)
         // FIND POSSIBLE WORDS DESIRED WORD CAN MAKE
         let array_of_words_that_begin_with_last_character = result_map.get(dw_lc);
 		if (dw_lc !== initiallaw(dw_lc)) {
-			array_of_words_that_begin_with_last_character.concat(result_map.get(initiallaw(dw_lc)));
+			array_of_words_that_begin_with_last_character = array_of_words_that_begin_with_last_character.concat(result_map.get(initiallaw(dw_lc)));
 		}
         array_of_words_that_begin_with_last_character.forEach(function (w)
         {
