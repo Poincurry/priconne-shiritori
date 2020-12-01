@@ -105,8 +105,8 @@ function read_word_list(callback)
     {
         word_array.forEach(function (phrase)
         {
-            let first_character = initiallaw(phrase[0]);
-            let last_character = initiallaw(get_last_character(phrase));
+            let first_character = phrase[0];
+            let last_character = get_last_character(phrase);
             let word = word_id + ";" + phrase + ";" + phrase_type;
 
             if (!result_map.has(first_character))
