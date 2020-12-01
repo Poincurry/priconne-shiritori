@@ -302,7 +302,7 @@ function get_possible_words(phrase)
                 possible_words.push({ [word_data.get(word_list_keys.priconneyomi)[i]] : word_list_keys.priconneyomi });
             }
         }
-
+		console.log(possible_words);
         // DISPLAY POSSIBLE RESULTS
         for (let i = 0 ; i < possible_words.length ; i++)
         {
