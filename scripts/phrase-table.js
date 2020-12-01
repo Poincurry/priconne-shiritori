@@ -64,6 +64,7 @@ function create_table(desired_word)
 		if (inverse_initiallaw(dw_fc)) {
 			for (let i = 0; i < inverse_initiallaw(dw_fc).length; i++) {
 				array_of_words_that_end_with_first_char.concat(reverse_result_map.get(inverse_initiallaw(dw_fc)[i]));
+				console.log(array_of_words_that_end_with_first_char);
 			}
 		}
         array_of_words_that_end_with_first_char.forEach(function (w)
