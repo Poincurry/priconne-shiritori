@@ -263,7 +263,7 @@ function remove_word_from_collection(word_id, phrase, phrase_type)
 function get_possible_words(phrase)
 {
     // NOTE THAT THIS IS IN HIRAGANA, KATAKANA CHARACTERS MUST BE CHECKED AS WELL
-    let end_character = initiallaw(get_last_character(phrase));
+    let end_character = get_last_character(phrase);
     let table_html = "";
     let counter = 0;
     let is_player_turn = !document.getElementById("your-turn-text").hidden;
@@ -277,27 +277,27 @@ function get_possible_words(phrase)
         // COLLECT POSSIBLE PHRASES FROM WORD
         for (let i = 0 ; i < word_data.get(word_list_keys.futsuyomi).length ; i++)
         {
-            let first_character = initiallaw(word_data.get(word_list_keys.futsuyomi)[i][0]);
+            let first_character = word_data.get(word_list_keys.futsuyomi)[i][0];
             if (end_character === first_character ||
-                end_character === first_character)
+                initiallaw(end_character) === first_character)
             {
                 possible_words.push({ [word_data.get(word_list_keys.futsuyomi)[i]] : word_list_keys.futsuyomi });
             }
         }
         for (let i = 0 ; i < word_data.get(word_list_keys.urayomi).length ; i++)
         {
-            let first_character = initiallaw(word_data.get(word_list_keys.urayomi)[i][0]);
+            let first_character = word_data.get(word_list_keys.urayomi)[i][0];
             if (end_character === first_character ||
-                end_character === first_character)
+                initiallaw(end_character) === first_character)
             {
                 possible_words.push({ [word_data.get(word_list_keys.urayomi)[i]] : word_list_keys.urayomi });
             }
         }
         for (let i = 0 ; i < word_data.get(word_list_keys.priconneyomi).length ; i++)
         {
-            let first_character = initiallaw(word_data.get(word_list_keys.priconneyomi)[i][0]);
+            let first_character = word_data.get(word_list_keys.priconneyomi)[i][0];
             if (end_character === first_character ||
-                end_character === first_character)
+                initiallaw(end_character) === first_character)
             {
                 possible_words.push({ [word_data.get(word_list_keys.priconneyomi)[i]] : word_list_keys.priconneyomi });
             }
@@ -344,8 +344,12 @@ function get_possible_words(phrase)
         let phrase_highlight = "";
         let color_highlight = "";
         let additional_title_text = "";
-        let last_character = initiallaw(get_last_character(phrase));
+        let last_character = get_last_character(phrase);
         let kaya_new_phrases = missing_phrase_map.get(last_character);
+		if (last_character !== initiallaw(last_character)) {
+			kaya_new_phrases.push = missing_phrase_map.get(initiallaw(last_character));
+		}
+		// 두음법칙 적용
         if (!is_player_turn)
         {
             // PHRASE IS NOT A PRICONNEYOMI
@@ -378,8 +382,11 @@ function get_possible_words(phrase)
             npc_choices_map.get(last_character).forEach(function (kaya_phrase)
             {
                 // GET LAST CHARACTER OF KAYA'S OPTION AND SEE IF THE USER CAN GET SOMETHING OUT OF IT
-                let lc = initiallaw(get_last_character(kaya_phrase.split(';')[1]));
+                let lc = get_last_character(kaya_phrase.split(';')[1]);
                 let missing_phrases = missing_phrase_map.get(lc);
+				if (lc !== initiallaw(lc)) {
+					missing_phrases.push = missing_phrase_map.get(initiallaw(lc));
+				}
 
                 // CHECK STATUS
                 if (kaya_new_phrases.includes(kaya_phrase))
@@ -600,6 +607,22 @@ function initiallaw(syllable)
 	return afterinitial[beforeinitial.search(syllable)];
 }
 // 두음법칙
+
+function inverse_initiallaw(syllable)
+{
+	var stringarray = '';
+	const beforeinitial = "감강거검게격견경계고과괴구귀그금기나네녀녕노논느니님다달당도두드디떡라란래량레려령로료루류름리마머메모목무문물미바박발별보봉부비사산살생서선소수술스승시식아안애야약양어여영오요우위유육음이일임자잔잠장적전정주쥐지진창체치카코쿠크키타탕토투트티파팔패페프플피하한해형호화";
+	const afterinitial = "감강거검게격견경계고과괴구귀그금기아네여영오논느이임다달당도두드디떡아안애양네여영오요우유음이마머메모목무문물미바박발별보봉부비사산살생서선소수술스승시식아안애야약양어여영오요우위유육음이일임자잔잠장적전정주쥐지진창체치카코쿠크키타탕토투트티파팔패페프플피하한해형호화";
+	const syllableexist = afterinitial.search(syllable);
+	if (syllableexist !== -1) {
+		stringarray = stringarray.concat(beforeinitial[syllableexist]);
+		const syllableexist2 = afterinitial.substring(syllableexist+1).search(syllable);
+		if (syllableexist2 !== -1) {
+			stringarray = stringarray.concat(beforeinitial[syllableexist2+syllableexist+1]);
+		}
+	}
+	return stringarray;
+}
 
 function toggle_rush_mode()
 {
