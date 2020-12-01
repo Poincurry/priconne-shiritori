@@ -286,7 +286,7 @@ function get_possible_words(phrase)
         }
         for (let i = 0 ; i < word_data.get(word_list_keys.urayomi).length ; i++)
         {
-            let first_character = word_data.get(word_list_keys.urayomi)[i][0];
+            let first_character = initiallaw(word_data.get(word_list_keys.urayomi)[i][0]);
             if (end_character === first_character ||
                 end_character === first_character)
             {
@@ -295,14 +295,13 @@ function get_possible_words(phrase)
         }
         for (let i = 0 ; i < word_data.get(word_list_keys.priconneyomi).length ; i++)
         {
-            let first_character = word_data.get(word_list_keys.priconneyomi)[i][0];
+            let first_character = initiallaw(word_data.get(word_list_keys.priconneyomi)[i][0]);
             if (end_character === first_character ||
                 end_character === first_character)
             {
                 possible_words.push({ [word_data.get(word_list_keys.priconneyomi)[i]] : word_list_keys.priconneyomi });
             }
         }
-		console.log(possible_words);
         // DISPLAY POSSIBLE RESULTS
         for (let i = 0 ; i < possible_words.length ; i++)
         {
