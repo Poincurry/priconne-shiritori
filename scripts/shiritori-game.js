@@ -396,7 +396,7 @@ function get_possible_words(phrase)
 						npc_choices_phrase[i+startnum] = additional_phrases[i];
 					}
 				} else {
-					missing_phrases = additional_phrases;
+					npc_choices_phrase = additional_phrases;
 				}
 			}
             npc_choices_phrase.forEach(function (kaya_phrase)
