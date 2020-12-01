@@ -348,6 +348,7 @@ function get_possible_words(phrase)
         let kaya_new_phrases = missing_phrase_map.get(last_character);
 		if (last_character !== initiallaw(last_character)) {
 			const additional_phrases = missing_phrase_map.get(initiallaw(last_character));
+			console.log(kaya_new_phrases);
 			const startnum = kaya_new_phrases.length;
 			for (let i = 0; i < additional_phrases.length; i++) {
 				kaya_new_phrases[i + startnum] = additional_phrases[i];
@@ -390,7 +391,7 @@ function get_possible_words(phrase)
                 let missing_phrases = missing_phrase_map.get(lc);
 				if (lc !== initiallaw(lc)) {
 					const additional_phrases = missing_phrase_map.get(initiallaw(lc));
-					const startnum = kaya_new_phrases.length;
+					const startnum = missing_phrases.length;
 					for (let i = 0; i < additional_phrases.length; i++) {
 						missing_phrases[i+startnum] = additional_phrases[i];
 					}
