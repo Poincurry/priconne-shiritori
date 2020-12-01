@@ -347,11 +347,15 @@ function get_possible_words(phrase)
         let last_character = get_last_character(phrase);
         let kaya_new_phrases = missing_phrase_map.get(last_character);
 		if (last_character !== initiallaw(last_character)) {
-			const additional_phrases = missing_phrase_map.get(initiallaw(last_character));
-			console.log(kaya_new_phrases);
-			const startnum = kaya_new_phrases.length;
-			for (let i = 0; i < additional_phrases.length; i++) {
-				kaya_new_phrases[i + startnum] = additional_phrases[i];
+			if (kaya_new_phrases) {
+				const additional_phrases = missing_phrase_map.get(initiallaw(last_character));
+				console.log(kaya_new_phrases);
+				const startnum = kaya_new_phrases.length;
+				for (let i = 0; i < additional_phrases.length; i++) {
+					kaya_new_phrases[i + startnum] = additional_phrases[i];
+				}
+			} else {
+				kaya_new_phrases = additional_phrases;
 			}
 		}
 		// 두음법칙 적용
@@ -389,13 +393,15 @@ function get_possible_words(phrase)
                 // GET LAST CHARACTER OF KAYA'S OPTION AND SEE IF THE USER CAN GET SOMETHING OUT OF IT
                 let lc = get_last_character(kaya_phrase.split(';')[1]);
                 var missing_phrases = missing_phrase_map.get(lc);
-				console.log(missing_phrases);
 				if (lc !== initiallaw(lc)) {
-					const additional_phrases = missing_phrase_map.get(initiallaw(lc));
-					console.log(missing_phrases);
-					const startnum = missing_phrases.length;
-					for (let i = 0; i < additional_phrases.length; i++) {
-						missing_phrases[i+startnum] = additional_phrases[i];
+					if (missing_phrases) {
+						const additional_phrases = missing_phrase_map.get(initiallaw(lc));
+						const startnum = missing_phrases.length;
+						for (let i = 0; i < additional_phrases.length; i++) {
+							missing_phrases[i+startnum] = additional_phrases[i];
+						}
+					} else {
+						missing_phrases = additional_phrases;
 					}
 				}
 
@@ -626,10 +632,14 @@ function inverse_initiallaw(syllable)
 	const afterinitial = "감강거검게격견경계고과괴구귀그금기아네여영오논느이임다달당도두드디떡아안애양네여영오요우유음이마머메모목무문물미바박발별보봉부비사산살생서선소수술스승시식아안애야약양어여영오요우위유육음이일임자잔잠장적전정주쥐지진창체치카코쿠크키타탕토투트티파팔패페프플피하한해형호화";
 	const syllableexist = afterinitial.search(syllable);
 	if (syllableexist !== -1) {
-		stringarray = stringarray.concat(beforeinitial[syllableexist]);
+		if (beforeinitial[syllableexist] !== syllable) {
+			stringarray = stringarray.concat(beforeinitial[syllableexist]);
+		}
 		const syllableexist2 = afterinitial.substring(syllableexist+1).search(syllable);
 		if (syllableexist2 !== -1) {
-			stringarray = stringarray.concat(beforeinitial[syllableexist2+syllableexist+1]);
+			if (beforeinitial[syllableexist2+syllableexist+1] !== syllable) {
+				stringarray = stringarray.concat(beforeinitial[syllableexist2+syllableexist+1]);
+			}
 		}
 	}
 	return stringarray;
