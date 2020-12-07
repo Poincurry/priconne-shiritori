@@ -378,10 +378,10 @@ function get_possible_words(phrase)
 					if (missing_phrase_map.get(last_character).length > 0) {
 						color_highlight = "gold-outline ";
 					} else if (missing_phrase_map.get(initiallaw(last_character))) {
-						color_highlight = (missing_phrase_map.get(initiallaw(last_character)).length > 0 || ? "gold-outline " : "");
+						color_highlight = (missing_phrase_map.get(initiallaw(last_character)).length > 0 ? "gold-outline " : "");
 					}
 				} else if (missing_phrase_map.get(initiallaw(last_character))) {
-					color_highlight = (missing_phrase_map.get(initiallaw(last_character)).length > 0 || ? "gold-outline " : "");
+					color_highlight = (missing_phrase_map.get(initiallaw(last_character)).length > 0 ? "gold-outline " : "");
 				}
             }
         }
