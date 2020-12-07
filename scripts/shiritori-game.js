@@ -797,13 +797,10 @@ function allset_data()
 {
     for (let [word_id, word_data] of word_list)
     {
-        let possible_words = [];
-        // COLLECT POSSIBLE PHRASES FROM WORD
         for (let i = 0 ; i < word_data.get(word_list_keys.futsuyomi).length ; i++)
         {
 			add_word_to_collection(word_id, word_data.get(word_list_keys.futsuyomi)[i], word_list_keys.futsuyomi);
         }
-		}
         for (let i = 0 ; i < word_data.get(word_list_keys.urayomi).length ; i++)
         {
             add_word_to_collection(word_id, word_data.get(word_list_keys.urayomi)[i], word_list_keys.urayomi);
@@ -812,4 +809,5 @@ function allset_data()
         {
             add_word_to_collection(word_id, word_data.get(word_list_keys.priconneyomi)[i], word_list_keys.priconneyomi);
         }
+	}
 }
