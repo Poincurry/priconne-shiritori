@@ -797,17 +797,24 @@ function allset_data()
 {
     for (let [word_id, word_data] of word_list)
     {
-        for (let i = 0 ; i < word_data.get(word_list_keys.futsuyomi).length ; i++)
+		let futsuyomi_array = word_data.get(word_list_keys.futsuyomi);
+		let urayomi_array = word_data.get(word_list_keys.urayomi);
+		let priconneyomi_array = word_data.get(word_list_keys.priconneyomi);
+        for (let i = 0 ; i < futsuyomi_array.length ; i++)
         {
-			add_word_to_collection(word_id, word_data.get(word_list_keys.futsuyomi)[i], word_list_keys.futsuyomi);
+			add_word_to_collection(word_id, futsuyomi_array[i], word_list_keys.futsuyomi);
         }
-        for (let i = 0 ; i < word_data.get(word_list_keys.urayomi).length ; i++)
+        for (let i = 0 ; i < urayomi_array.length ; i++)
         {
-            add_word_to_collection(word_id, word_data.get(word_list_keys.urayomi)[i], word_list_keys.urayomi);
+            add_word_to_collection(word_id, urayomi_array[i], word_list_keys.urayomi);
         }
-        for (let i = 0 ; i < word_data.get(word_list_keys.priconneyomi).length ; i++)
+        for (let i = 0 ; i < priconneyomi_array.length ; i++)
         {
-            add_word_to_collection(word_id, word_data.get(word_list_keys.priconneyomi)[i], word_list_keys.priconneyomi);
+            add_word_to_collection(word_id, priconneyomi_array[i], word_list_keys.priconneyomi);
         }
 	}
+	if (shiritori_game.turn_count === 0)
+    {
+        shiritori_game.unsaved_changes = true;
+    }
 }
