@@ -3,9 +3,11 @@
 ## Introduction
 It is Korean-translated version of Re:dive Shiritori Helper made by Expugn.
 
-It is uploaded to utilize XMLHttpRequest function in Javascript, so planned to use privately.
+It is uploaded to utilize XMLHttpRequest function in Javascript.
 
 Manual is below the line from raw source.
+
+Data source: <https://github.com/HerDataSam/redive_kr_db_diff/blob/master/srt_panel.csv>
 
 URL: <https://poincurry.github.io/priconne-shiritori-kor/>
 
