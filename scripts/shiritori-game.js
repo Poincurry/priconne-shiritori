@@ -356,6 +356,7 @@ function get_possible_words(phrase)
 				for (let i = 0; i < additional_phrases.length; i++) {
 					kaya_new_phrases[i + startnum] = additional_phrases[i];
 				}
+				kaya_new_phrases = minus_same_image(kaya_new_phrases);
 			} else {
 				kaya_new_phrases = additional_phrases;
 			}
@@ -400,6 +401,7 @@ function get_possible_words(phrase)
 					for (let i = 0; i < additional_phrases.length; i++) {
 						npc_choices_phrase[i+startnum] = additional_phrases[i];
 					}
+					npc_choices_phrase = minus_same_image(npc_choices_phrase);
 				} else {
 					npc_choices_phrase = additional_phrases;
 				}
@@ -416,6 +418,7 @@ function get_possible_words(phrase)
 						for (let i = 0; i < additional_phrases.length; i++) {
 							missing_phrases[i+startnum] = additional_phrases[i];
 						}
+						missing_phrases = minus_same_image(missing_phrases);
 					} else {
 						missing_phrases = additional_phrases;
 					}
@@ -659,6 +662,18 @@ function inverse_initiallaw(syllable)
 		}
 	}
 	return stringarray;
+}
+
+function minus_same_image(mapdata)
+{
+	let imagesarray = [];
+	for (let i = 0; i < mapdata.length; i++) {
+		if (imagesarray.includes(mapdata[i].split(';')[0])) {
+			mapdata.splice(i, 1)
+		}
+		imagesarray.push(mapdata[i].split(';')[0]);
+	}
+	return mapdata;
 }
 
 function toggle_rush_mode()
