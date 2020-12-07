@@ -118,7 +118,7 @@ function create_table(desired_word)
 				array_of_words_that_begin_with_last_character = result_map.get(initiallaw(dw_lc));
 			} else {
 			array_of_words_that_begin_with_last_character = array_of_words_that_begin_with_last_character.concat(result_map.get(initiallaw(dw_lc)));
-			array_of_words_that_begin_with_last_character = minus_same_image(array_of_words_that_begin_with_last_character);
+			array_of_words_that_begin_with_last_character = minus_same_image(array_of_words_that_begin_with_last_character, dw_lc);
 			}
 		}
         array_of_words_that_begin_with_last_character.forEach(function (w)
