@@ -667,11 +667,13 @@ function inverse_initiallaw(syllable)
 function minus_same_image(mapdata)
 {
 	let imagesarray = [];
-	for (let i = 0; i < mapdata.length; i++) {
-		if (imagesarray.includes(mapdata[i].split(';')[0])) {
-			mapdata.splice(i, 1)
+	if (mapdata) {
+		for (let i = 0; i < mapdata.length; i++) {
+			if (imagesarray.includes(mapdata[i].split(';')[0])) {
+				mapdata.splice(i, 1)
+			}
+			imagesarray.push(mapdata[i].split(';')[0]);
 		}
-		imagesarray.push(mapdata[i].split(';')[0]);
 	}
 	return mapdata;
 }
