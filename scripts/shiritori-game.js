@@ -666,6 +666,7 @@ function inverse_initiallaw(syllable)
 
 function minus_same_image(mapdata)
 {
+	console.log(mapdata);
 	let imagesarray = [];
 	if (mapdata) {
 		for (let i = 0; i < mapdata.length; i++) {
