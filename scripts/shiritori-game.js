@@ -420,8 +420,6 @@ function get_possible_words(phrase)
 						for (let i = 0; i < additional_phrases.length; i++) {
 							missing_phrases[i+startnum] = additional_phrases[i];
 						}
-						console.log(missing_phrases);
-						xx=missing_phrases;
 						missing_phrases = minus_same_image(missing_phrases);
 					} else {
 						missing_phrases = additional_phrases;
@@ -670,13 +668,14 @@ function inverse_initiallaw(syllable)
 
 function minus_same_image(mapdata)
 {
-	console.log(mapdata);
-	let imagesarray = [];
+	const imagesarray = [];
 	if (mapdata) {
 		for (let i = 0; i < mapdata.length; i++) {
 			if (imagesarray.includes(mapdata[i].split(';')[0])) {
 				mapdata.splice(i, 1)
 			}
+			console.log(mapdata);
+			console.log(mapdata[i].split(';')[0]);
 			imagesarray.push(mapdata[i].split(';')[0]);
 		}
 	}
