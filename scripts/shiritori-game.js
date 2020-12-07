@@ -302,8 +302,10 @@ function get_possible_words(phrase)
                 possible_words.push({ [word_data.get(word_list_keys.priconneyomi)[i]] : word_list_keys.priconneyomi });
             }
         }
-		console.log(possible_words);
-        // DISPLAY POSSIBLE RESULTS
+		if (possible_words.length > 1) {
+			possible_words = possible_words[0];
+		}
+        // 나무방패-아머실드, 니논-이국의소녀, 노블레스 오블리주-오호호호호 겹치는 것 보정
         for (let i = 0 ; i < possible_words.length ; i++)
         {
             // (word_id, {phrase : phrase_type})
@@ -370,7 +372,7 @@ function get_possible_words(phrase)
             {
                 // COLOR HIGHLIGHT GOLD IF THERE IS A WORD THAT A PLAYER NEEDS
 				if (missing_phrase_map.get(last_character)) {
-					color_highlight = (missing_phrase_map.get(last_character).length > 0 ? "gold-outline " : "");
+					color_highlight = (missing_phrase_map.get(last_character).length > 0 || missing_phrase_map.get(initiallaw(last_character)).length > 0 ? "gold-outline " : "");
 				}
             }
         }
