@@ -24,6 +24,8 @@ let shiritori_game = {
     new_phrase_collected: false,
 };
 
+var xx;
+
 function shiritori(word_id, phrase, phrase_type)
 {
     console.log(get_colored_message(shiritori_game.sender_name, "Selected " + highlight_code(word_id) + " ; " + highlight_code(phrase) + " ; " + highlight_code(phrase_type), message_status.INFO));
@@ -418,6 +420,8 @@ function get_possible_words(phrase)
 						for (let i = 0; i < additional_phrases.length; i++) {
 							missing_phrases[i+startnum] = additional_phrases[i];
 						}
+						console.log(missing_phrases);
+						xx=missing_phrases;
 						missing_phrases = minus_same_image(missing_phrases);
 					} else {
 						missing_phrases = additional_phrases;
