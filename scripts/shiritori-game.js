@@ -358,7 +358,7 @@ function get_possible_words(phrase)
 				for (let i = 0; i < additional_phrases.length; i++) {
 					kaya_new_phrases[i + startnum] = additional_phrases[i];
 				}
-				kaya_new_phrases = minus_same_image(kaya_new_phrases);
+				kaya_new_phrases = minus_same_image(kaya_new_phrases, last_character);
 			} else {
 				kaya_new_phrases = additional_phrases;
 			}
@@ -374,15 +374,20 @@ function get_possible_words(phrase)
             else
             {
                 // COLOR HIGHLIGHT GOLD IF THERE IS A WORD THAT A PLAYER NEEDS
-				if (missing_phrase_map.get(last_character)) {
-					if (missing_phrase_map.get(last_character).length > 0) {
-						color_highlight = "gold-outline ";
-					} else if (missing_phrase_map.get(initiallaw(last_character))) {
-						color_highlight = (missing_phrase_map.get(initiallaw(last_character)).length > 0 ? "gold-outline " : "");
+				let choices_phrase = missing_phrase_map.get(last_character)
+				if (last_character !== initiallaw(last_character)) {
+					const additional_phrases = missing_phrase_map.get(initiallaw(last_character));
+					if (choices_phrase) {
+						const startnum = choices_phrase.length;
+						for (let i = 0; i < additional_phrases.length; i++) {
+							choices_phrase[i+startnum] = additional_phrases[i];
+						}
+						choices_phrase = minus_same_image(choices_phrase, last_character);
+					} else {
+						choices_phrase = additional_phrases;
 					}
-				} else if (missing_phrase_map.get(initiallaw(last_character))) {
-					color_highlight = (missing_phrase_map.get(initiallaw(last_character)).length > 0 ? "gold-outline " : "");
 				}
+				color_highlight = (choices_phrase.length > 0 ? "gold-outline " : "");
             }
         }
         else
@@ -409,7 +414,7 @@ function get_possible_words(phrase)
 					for (let i = 0; i < additional_phrases.length; i++) {
 						npc_choices_phrase[i+startnum] = additional_phrases[i];
 					}
-					npc_choices_phrase = minus_same_image(npc_choices_phrase);
+					npc_choices_phrase = minus_same_image(npc_choices_phrase, last_character);
 				} else {
 					npc_choices_phrase = additional_phrases;
 				}
@@ -426,7 +431,7 @@ function get_possible_words(phrase)
 						for (let i = 0; i < additional_phrases.length; i++) {
 							missing_phrases[i+startnum] = additional_phrases[i];
 						}
-						missing_phrases = minus_same_image(missing_phrases);
+						missing_phrases = minus_same_image(missing_phrases, lc);
 						console.log(missing_phrases);
 					} else {
 						missing_phrases = additional_phrases;
@@ -673,16 +678,18 @@ function inverse_initiallaw(syllable)
 	return stringarray;
 }
 
-function minus_same_image(mapdata)
+function minus_same_image(mapdata, onecharacter)
 {
-	const imagesarray = [];
 	if (mapdata) {
 		for (let i = 0; i < mapdata.length; i++) {
-			let imagename = mapdata[i].split(';')[0];
-			if (imagesarray.includes(imagename)) {
-				mapdata.splice(i, 1)
+			let imagename = mapdata[i].split(';')[1];
+			if (imagename === "아머실드" && onecharacter === "나") {
+				mapdata.splice(i, 1);
+			} else if (imagename === "이국의 소녀" && onecharacter === "니") {
+				mapdata.splice(i, 1);
+			} else if (imagename === "오호호호호" && onecharacter === "노") {
+				mapdata.splice(i, 1);
 			}
-			imagesarray.push(imagename);
 		}
 	}
 	return mapdata;
