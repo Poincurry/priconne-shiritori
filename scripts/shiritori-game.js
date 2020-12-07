@@ -812,5 +812,4 @@ function allset_data()
         {
             add_word_to_collection(word_id, word_data.get(word_list_keys.priconneyomi)[i], word_list_keys.priconneyomi);
         }
-    }
 }
