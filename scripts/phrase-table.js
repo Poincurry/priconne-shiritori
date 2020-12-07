@@ -61,7 +61,10 @@ function create_table(desired_word)
 
         // FIND POSSIBLE WORDS THAT CAN LEAD TO DESIRED WORD
         let array_of_words_that_end_with_first_char = reverse_result_map.get(dw_fc);
-		if (inverse_initiallaw(dw_fc)) {
+		
+		if (dw_data[1] === "아머실드" || dw_data[1] === "이국의 소녀" || dw_data[1] === "오호호호호") {
+			
+		} else if (inverse_initiallaw(dw_fc)) {
 			for (let i = 0; i < inverse_initiallaw(dw_fc).length; i++) {
 				if (!array_of_words_that_end_with_first_char) {
 					array_of_words_that_end_with_first_char = reverse_result_map.get(inverse_initiallaw(dw_fc)[i]);
@@ -70,6 +73,10 @@ function create_table(desired_word)
 				}
 			}
 		}
+			
+		
+		
+		
         array_of_words_that_end_with_first_char.forEach(function (w)
         {
             let w_data = w.split(';');
@@ -111,6 +118,7 @@ function create_table(desired_word)
 				array_of_words_that_begin_with_last_character = result_map.get(initiallaw(dw_lc));
 			} else {
 			array_of_words_that_begin_with_last_character = array_of_words_that_begin_with_last_character.concat(result_map.get(initiallaw(dw_lc)));
+			array_of_words_that_begin_with_last_character = minus_same_image(array_of_words_that_begin_with_last_character);
 			}
 		}
         array_of_words_that_begin_with_last_character.forEach(function (w)
