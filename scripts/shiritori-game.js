@@ -432,7 +432,6 @@ function get_possible_words(phrase)
 							missing_phrases[i+startnum] = additional_phrases[i];
 						}
 						missing_phrases = minus_same_image(missing_phrases, lc);
-						console.log(missing_phrases);
 					} else {
 						missing_phrases = additional_phrases;
 					}
