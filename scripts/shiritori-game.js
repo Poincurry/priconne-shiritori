@@ -671,12 +671,11 @@ function minus_same_image(mapdata)
 	const imagesarray = [];
 	if (mapdata) {
 		for (let i = 0; i < mapdata.length; i++) {
-			if (imagesarray.includes(mapdata[i].split(';')[0])) {
+			let imagename = mapdata[i].split(';')[0];
+			if (imagesarray.includes(imagename)) {
 				mapdata.splice(i, 1)
 			}
-			console.log(mapdata);
-			console.log(mapdata[i].split(';')[0]);
-			imagesarray.push(mapdata[i].split(';')[0]);
+			imagesarray.push(imagename);
 		}
 	}
 	return mapdata;
