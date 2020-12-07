@@ -303,7 +303,7 @@ function get_possible_words(phrase)
             }
         }
 		if (possible_words.length > 1) {
-			possible_words = possible_words[0];
+			possible_words.pop();
 		}
         // 나무방패-아머실드, 니논-이국의소녀, 노블레스 오블리주-오호호호호 겹치는 것 보정
         for (let i = 0 ; i < possible_words.length ; i++)
