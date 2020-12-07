@@ -375,7 +375,13 @@ function get_possible_words(phrase)
             {
                 // COLOR HIGHLIGHT GOLD IF THERE IS A WORD THAT A PLAYER NEEDS
 				if (missing_phrase_map.get(last_character)) {
-					color_highlight = (missing_phrase_map.get(last_character).length > 0 || missing_phrase_map.get(initiallaw(last_character)).length > 0 ? "gold-outline " : "");
+					if (missing_phrase_map.get(last_character).length > 0) {
+						color_highlight = "gold-outline ";
+					} else if (missing_phrase_map.get(initiallaw(last_character))) {
+						color_highlight = (missing_phrase_map.get(initiallaw(last_character)).length > 0 || ? "gold-outline " : "");
+					}
+				} else if (missing_phrase_map.get(initiallaw(last_character))) {
+					color_highlight = (missing_phrase_map.get(initiallaw(last_character)).length > 0 || ? "gold-outline " : "");
 				}
             }
         }
