@@ -61,6 +61,7 @@ function create_table(desired_word)
 
         // FIND POSSIBLE WORDS THAT CAN LEAD TO DESIRED WORD
         let array_of_words_that_end_with_first_char = reverse_result_map.get(dw_fc);
+		console.log(array_of_words_that_end_with_first_char);
 		if (inverse_initiallaw(dw_fc)) {
 			for (let i = 0; i < inverse_initiallaw(dw_fc).length; i++) {
 				if (!array_of_words_that_end_with_first_char) {
